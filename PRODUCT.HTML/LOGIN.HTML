@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In & Sign Up</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background:  rgb(255, 193, 193);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      background: #fff;
+      width: 380px;
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .forms {
+      display: flex;
+      width: 200%;
+      transition: all 0.5s ease;
+    }
+
+    .form {
+      width: 50%;
+      padding: 20px;
+      transition: 0.5s;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .input-field {
+      width: 100%;
+      margin: 10px 0;
+      position: relative;
+    }
+
+    .input-field input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      background: #2575fc;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: rgb(255, 193, 193);
+    }
+
+    .toggle-text {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .toggle-text a {
+      color: #2575fc;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    #signup-form {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+
+    .container.signup-mode .forms {
+      transform: translateX(-50%);
+    }
+
+    .container.signup-mode #signin-form {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+
+    .container.signup-mode #signup-form {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container" id="container">
+    <div class="forms">
+      <!-- Sign In Form -->
+      <form class="form" id="signin-form">
+        <h2>Sign In</h2>
+        <div class="input-field">
+          <input type="text" placeholder="Email or Username" required>
+        </div>
+        <div class="input-field">
+          <input type="password" placeholder="Password" required>
+        </div>
+        <button class="btn"><a href="INDEX.HTML">Sign In</a></button>
+        <p class="toggle-text">Don't have an account? <a href="#" id="show-signup">Sign Up</a></p>
+      </form>
+
+      <!-- Sign Up Form -->
+      <form class="form" id="signup-form">
+        <h2>Sign Up</h2>
+        <div class="input-field">
+          <input type="text" placeholder="Username" required>
+        </div>
+        <div class="input-field">
+          <input type="email" placeholder="Email" required>
+        </div>
+        <div class="input-field">
+          <input type="password" placeholder="Password" required>
+        </div>
+        <button class="btn"><a href="INDEX.HTML">SingUp</a></button>
+        <p class="toggle-text">Already have an account? <a href="#" id="show-signin">Sign In</a></p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const container = document.getElementById('container');
+    const showSignup = document.getElementById('show-signup');
+    const showSignin = document.getElementById('show-signin');
+
+    showSignup.addEventListener('click', () => {
+      container.classList.add('signup-mode');
+    });
+
+    showSignin.addEventListener('click', () => {
+      container.classList.remove('signup-mode');
+    });
+  </script>
+</body>
+</html>
